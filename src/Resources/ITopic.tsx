@@ -4,4 +4,5 @@ export interface ITopic
   idx:string;
   imgPath:string;
   grade:string;
+  like:boolean|null;
 }

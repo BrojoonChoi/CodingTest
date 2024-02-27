@@ -1,0 +1,20 @@
+.topicItemCSS {
+    display:flex; 
+    flex-Direction:column; 
+    width:150px; 
+    border-Radius:16px; 
+    border-Color:gray; 
+    border-Width:6px; 
+    align-Items:center; 
+    border-Style:solid; 
+    margin-Left:1rem; 
+    margin-Right:1rem
+}
+
+.heartCSS {
+    width:16px;
+    position:absolute;
+    left:30px;
+    top:6px;
+    opacity: 0.6;
+}

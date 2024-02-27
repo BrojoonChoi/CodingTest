@@ -1,64 +1,41 @@
+import { BrowserRouter, Route, Routes, Router } from 'react-router-dom';
 import './App.css';
-import React, { useState, useEffect } from 'react'
-import { ITopic } from './Resources/ITopic';
+import { ITopic } from './Resources/ITopic'
+import React, { useState, useEffect }  from 'react'
+import MainView from './View/mainview.tsx';
 import jsonFile from './etc/topic.json'
-import TopicItem from './Components/topicItem.tsx'
-import SearchBar from './Components/searchbar.tsx';
-import RadioButtons from './Components/radiobuttons.tsx';
 
 function App() {
-  const defaultMessage:Array<ITopic[]> = [[{title:'검색 결과가 없시유',idx:'',imgPath:'notFound.png',grade:'전체', like:false}]]
-  const [data, setData] = useState<Array<ITopic[]> | null>(null)
-
   const [filter, setFilter] = useState<string> ('')
-  const handleInputChange = (event) => {
-    setFilter(event.target.value);
-  };
-
   const [selectedOption, setSelectedOption] = useState<string>('전체');
-  const handleOptionChange = (option) => {
-    setSelectedOption(option.target.value);
-  };
-  
+  const [parsedFile, setParseFile] = useState<ITopic[]>();
+
   useEffect(() => {
-    if (jsonFile) {
-      const filteredData = jsonFile.filter((item) => 
-        item.title.toUpperCase().includes(filter.toUpperCase()) && (item.grade.toUpperCase().includes(selectedOption) || selectedOption === null || selectedOption.includes('전체'))
-      )
+    const func = async() => {
+      if (jsonFile) {
+        const readFile:ITopic[] = await jsonFile.map((item, index) => ({
+          title:item.title ?? "",
+          idx:item.idx ?? "",
+          imgPath:item.imgPath ?? "",
+          grade:item.grade ?? "",
+          like:item.like ?? false,
+          seq:index
+        }))
 
-      const reducedData = filteredData.reduce((acc: Array<ITopic[]>, curVal: ITopic, index: number) => {
-        if (index % 3 === 0)
-        {
-          acc.push(filteredData.slice(index, index + 3))
-        }
-        return acc;
-      }, []);
-
-      reducedData.length === 0 ? setData(defaultMessage) : setData(reducedData)
+        setParseFile(readFile)
+      }
     }
-  }, [jsonFile, filter, selectedOption])
+
+    func()
+  }, [])
 
   return (
-    <div style={{display:'flex', flexDirection:'column' ,alignItems:'center', backgroundColor:'lightgray', alignContent:'center', justifyContent:'center', paddingLeft:'10rem', paddingRight:'10rem'}}>
-      <SearchBar onChange={handleInputChange}/>
-      <RadioButtons onChange={handleOptionChange} selectedOption={selectedOption}/>
-      <div>
-        {
-          data?.map((innerArray:ITopic[], index) => {
-            return (
-              <div key={"MINE"+index.toString()} style={{display:'flex', flexDirection:'row', marginTop:'1rem', marginBottom:'1rem'}}>
-                {
-                  innerArray.map((item:ITopic, indexEx) => { 
-                    return (
-                      <TopicItem infomation={item} key={index.toString() + "AND" + indexEx.toString()}/>
-                    )
-                  })
-                }
-              </div>
-          )
-          })
-        }
-      </div>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainView parsedFile={parsedFile} filter={filter} setFilter={setFilter} selectedOption={selectedOption} setSelectedOption={setSelectedOption} />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

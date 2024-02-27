@@ -1,45 +1,48 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { ITopic } from '../Resources/ITopic';
 import '../Resources/design.css'
+import axios from 'axios';
 
 type ITopicProps = {
-  infomation: ITopic;
+  information: ITopic;
 };
 
-const TopicItem:React.FC<ITopicProps> = ({infomation}) => {
-  const [heartOn, setHeartOn] = useState<boolean | undefined | null>(infomation.like)
+const TopicItem:React.FC<ITopicProps> = ({information}) => {
+  const [heartOn, setHeartOn] = useState<boolean | undefined | null>(information.like)
   useEffect ( () => {
   },[])
 
   const likeEvent = () => {
     const getData = async () => {
+      //검색결과 없음 화면은 그냥 리턴
+      if (information.seq === -1)
+        return
       try {
         let likeCheck:boolean
-        if (infomation.like === undefined)
+        if (information.like === undefined)
         {
-          infomation.like = true
+          information.like = true
         }
         else
         {
-          infomation.like = !infomation.like;
+          information.like = !information.like;
         }
-        setHeartOn(infomation.like)
-
-        const response = await fetch('https://api.example.com/data', {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(infomation),
-        });
-
-        console.log(JSON.stringify(infomation))
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch data');
-        }
-
-        const responseData = await response.json();
+        setHeartOn(information.like)
+        await axios.put(`http://localhost:3001/${information.seq}`, {
+          title:information.title,
+          idx:information.idx,
+          imgPath:information.imgPath,
+          grade:information.grade,
+          like:information.like
+        }).then
+        (
+          (response) => {
+            if (response.status !== 200)
+              throw new Error('Failed to fetch data');
+            console.log(response.data)
+          }
+        )
       } catch (error) {
           console.log(error)
       }
@@ -49,10 +52,10 @@ const TopicItem:React.FC<ITopicProps> = ({infomation}) => {
 
   return (
     <div className='topicItemCSS'>
-      <span style={{textWrap:'wrap', width:'100%'}}>{infomation.title}</span>
+      <Link to={`/${information.idx}`} style={{textWrap:'wrap', width:'100%'}}>{information.title}</Link>
       <div style={{position:'relative', width: '150px', height: '150px',}} onDoubleClick={likeEvent}>
-        <img src={infomation.imgPath} style={{ width: '150px', height: '150px', objectFit: 'scale-down', position:'absolute', top:'0px', left:'0px' }}/>
-        { (heartOn === undefined || heartOn === false) ? <img src='img_heart_empty.png' className='heartCSS' /> : <img src={'img_heart_filled.png'} className='heartCSS'/> }
+        <img src={information.imgPath} style={{ width: '150px', height: '150px', objectFit: 'scale-down', position:'absolute', top:'0px', left:'0px' }} alt="image"/>
+        { (heartOn === undefined || heartOn === false) ? <img src='img_heart_empty.png' className='heartCSS' alt="image"/> : <img src={'img_heart_filled.png'} className='heartCSS' alt="image"/> }
       </div>
     </div>
   );

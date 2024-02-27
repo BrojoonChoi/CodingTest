@@ -3,19 +3,22 @@
     "title": "프리토킹",
     "idx": "476",
     "imgPath": "https://cdn.tutoring.co.kr/uploads/topic_cover/2022/09/13/20220913102424_631fdbc818b11.jpg",
-    "grade": "중급"
+    "grade": "중급",
+    "like": false
   },
   {
     "title": "Tutoring Times 2021 Vol.11",
     "idx": "3278",
     "imgPath": "https://cdn.tutoring.co.kr/uploads/topic_cover/2021/08/17/20210817100243_611b0ab30848e.jpg",
-    "grade": "고급"
+    "grade": "고급",
+    "like": false
   },
   {
     "title": "Tutoring Times 2021 Vol.12",
     "idx": "3279",
     "imgPath": "https://cdn.tutoring.co.kr/uploads/topic_cover/2021/08/17/20210817102454_611b0fe62c970.jpg",
-    "grade": "고급"
+    "grade": "고급",
+    "like": false
   },
   {
     "title": "Word Traveler (Book 1~2)",
@@ -27,13 +30,15 @@
     "title": "Reading Master 4 (Book 1~2)",
     "idx": "139",
     "imgPath": "https://cdn.tutoring.co.kr/uploads/topic_cover/2017/04/05/20170405181322_5f474cb6a117e.jpg",
-    "grade": "고급"
+    "grade": "고급",
+    "like": true
   },
   {
     "title": "Reading Master 3 (Book 1~2)",
     "idx": "138",
     "imgPath": "https://cdn.tutoring.co.kr/uploads/topic_cover/2017/04/05/20170405180444_5f474cb65561a.jpg",
-    "grade": "중급"
+    "grade": "중급",
+    "like": false
   },
   {
     "title": "My Reading Rainbow (Rainbow 1~3)",

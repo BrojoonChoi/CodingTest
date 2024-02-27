@@ -5,4 +5,5 @@ export interface ITopic
   imgPath:string;
   grade:string;
   like:boolean|null;
+  seq:number;
 }

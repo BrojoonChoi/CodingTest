@@ -33,7 +33,7 @@ const MainView = ({parsedFile, filter, setFilter, selectedOption, setSelectedOpt
 
       reducedData.length === 0 ? setData(defaultMessage) : setData(reducedData)
     }
-  }, [filter, selectedOption])
+  }, [parsedFile, filter, selectedOption])
 
   return (
     <div style={{display:'flex', flexDirection:'column' ,alignItems:'center', backgroundColor:'lightgray', alignContent:'center', justifyContent:'center', paddingLeft:'10rem', paddingRight:'10rem'}}>

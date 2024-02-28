@@ -16,10 +16,14 @@
    8. 좋아요 발생 시 API를 호출하여 PATCH 전송
    9. Route 개발을 위해 App에 개발된 파일을 mainview.tsx로 이관
    10. Route 구현 및 Lifting State 구현
+   11. hook 수정으로 버그 수정(조회 바로 안 되는 버그)
+   12. 상세 페이지 구현
+   13. 상세 페이지 접속 시 get 호출하여 like 반영하도록 수정
 
 3. 실행
    클라이언트 실행
    1. npm run-script start
    json-server 실행
-   2. cd .\src\etc\
+   1. cmd
+   2. cd .\src\etc\ (json 파일이 있는 곳으로 이동해야 함)
    3. json-server --watch topic.json --port 3001

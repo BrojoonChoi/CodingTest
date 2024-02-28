@@ -4,7 +4,7 @@
     "idx": "476",
     "imgPath": "https://cdn.tutoring.co.kr/uploads/topic_cover/2022/09/13/20220913102424_631fdbc818b11.jpg",
     "grade": "중급",
-    "like": false
+    "like": true
   },
   {
     "title": "Tutoring Times 2021 Vol.11",
@@ -18,20 +18,21 @@
     "idx": "3279",
     "imgPath": "https://cdn.tutoring.co.kr/uploads/topic_cover/2021/08/17/20210817102454_611b0fe62c970.jpg",
     "grade": "고급",
-    "like": false
+    "like": true
   },
   {
     "title": "Word Traveler (Book 1~2)",
     "idx": "140",
     "imgPath": "https://cdn.tutoring.co.kr/uploads/topic_cover/2017/04/05/20170405181443_5f474cb8085dc.jpg",
-    "grade": "입문"
+    "grade": "입문",
+    "like": false
   },
   {
     "title": "Reading Master 4 (Book 1~2)",
     "idx": "139",
     "imgPath": "https://cdn.tutoring.co.kr/uploads/topic_cover/2017/04/05/20170405181322_5f474cb6a117e.jpg",
     "grade": "고급",
-    "like": true
+    "like": false
   },
   {
     "title": "Reading Master 3 (Book 1~2)",

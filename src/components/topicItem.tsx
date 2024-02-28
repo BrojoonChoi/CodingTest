@@ -52,10 +52,10 @@ const TopicItem:React.FC<ITopicProps> = ({information}) => {
 
   return (
     <div className='topicItemCSS'>
-      <Link to={`/${information.idx}`} style={{textWrap:'wrap', width:'100%'}}>{information.title}</Link>
+      <Link to={`/detail/${information.seq}`} style={{textWrap:'wrap', width:'100%'}}>{information.title}</Link>
       <div style={{position:'relative', width: '150px', height: '150px',}} onDoubleClick={likeEvent}>
         <img src={information.imgPath} style={{ width: '150px', height: '150px', objectFit: 'scale-down', position:'absolute', top:'0px', left:'0px' }} alt="image"/>
-        { (heartOn === undefined || heartOn === false) ? <img src='img_heart_empty.png' className='heartCSS' alt="image"/> : <img src={'img_heart_filled.png'} className='heartCSS' alt="image"/> }
+        { (heartOn === undefined || heartOn === false) ? <img src={'/img_heart_empty.png'} className='heartCSS' alt="image"/> : <img src={'/img_heart_filled.png'} className='heartCSS' alt="image"/> }
       </div>
     </div>
   );

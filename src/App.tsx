@@ -3,6 +3,7 @@ import './App.css';
 import { ITopic } from './Resources/ITopic'
 import React, { useState, useEffect }  from 'react'
 import MainView from './View/mainview.tsx';
+import DetailView from './View/detailview.tsx';
 import jsonFile from './etc/topic.json'
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainView parsedFile={parsedFile} filter={filter} setFilter={setFilter} selectedOption={selectedOption} setSelectedOption={setSelectedOption} />} />
+          <Route path="/detail/:idx" element={<DetailView />} />
         </Routes>
       </BrowserRouter>
     </div>

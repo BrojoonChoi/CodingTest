@@ -13,7 +13,7 @@
    5. filter를 통한 검색 기능 구현
    6. filter를 통한 카테고리 구분 기능 추가
    7. 더블 클릭하여 좋아요 하기 기능 추가
-   8. 좋아요 발생 시 API를 호출하여 PATCH 전송
+   8. 좋아요 발생 시 API를 호출하여 PUT 전송(PATCH 시 json 형식이 깨짐)
    9. Route 개발을 위해 App에 개발된 파일을 mainview.tsx로 이관
    10. Route 구현 및 Lifting State 구현
    11. hook 수정으로 버그 수정(조회 바로 안 되는 버그)
